@@ -148,6 +148,17 @@
     .color-swatch.selected {
       outline-color: var(--wa-color-text-normal);
     }
+
+    .ui-component-examples {
+      columns: 6 300px;
+      column-gap: var(--wa-space-l);
+
+
+      & > * {
+      break-inside: avoid;
+        margin-bottom: var(--wa-space-m);
+      }
+    }
   </style>
 
   <script type="module">
