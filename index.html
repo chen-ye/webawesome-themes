@@ -122,6 +122,32 @@
       font-weight: var(--wa-font-weight-bold);
       margin-bottom: var(--wa-space-m);
     }
+    .color-picker {
+      display: flex;
+      gap: var(--wa-space-xs);
+      flex-wrap: wrap;
+    }
+
+    .color-swatch {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--wa-border-radius-pill);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      background-color: var(--swatch-color);
+      outline-offset: 2px;
+      outline: 2px solid transparent;
+      transition: outline-color 0.2s;
+    }
+
+    .color-swatch:hover {
+      outline-color: var(--wa-color-neutral-border-normal);
+    }
+
+    .color-swatch.selected {
+      outline-color: var(--wa-color-text-normal);
+    }
   </style>
 
   <script type="module">
@@ -180,21 +206,24 @@
     const appearanceToggle = document.getElementById('appearance-toggle');
     const themeSelect = document.getElementById('theme-select');
     const paletteSelect = document.getElementById('palette-select');
-    const brandSelect = document.getElementById('brand-select');
     const radiusSlider = document.getElementById('radius-slider');
     const fontSizeSlider = document.getElementById('font-size-slider');
     const spaceSlider = document.getElementById('space-slider');
     const borderWidthSlider = document.getElementById('border-width-slider');
     const previewArea = document.getElementById('preview-area');
+
+    let currentBrand = 'indigo';
+    let currentNeutral = 'gray';
     const configCode = document.getElementById('config-code');
 
     function updateConfig() {
       const themeClass = themeSelect.value === 'default' ? 'wa-theme-default' : `wa-theme-${themeSelect.value}`;
       const paletteClass = paletteSelect.value === 'default' ? '' : `wa-palette-${paletteSelect.value}`;
-      const brandClass = brandSelect.value === 'indigo' ? '' : `wa-brand-${brandSelect.value}`;
+      const brandClass = currentBrand === 'indigo' ? '' : `wa-brand-${currentBrand}`;
+      const neutralClass = currentNeutral === 'gray' ? '' : `wa-neutral-${currentNeutral}`;
       const darkClass = appearanceToggle.checked ? 'wa-dark' : '';
 
-      const classes = [themeClass, paletteClass, brandClass, darkClass].filter(Boolean).join(' ');
+      const classes = [themeClass, paletteClass, brandClass, neutralClass, darkClass].filter(Boolean).join(' ');
 
       html.className = classes;
 
@@ -218,11 +247,29 @@
     appearanceToggle.addEventListener('change', updateConfig);
     themeSelect.addEventListener('change', updateConfig);
     paletteSelect.addEventListener('change', updateConfig);
-    brandSelect.addEventListener('change', updateConfig);
     radiusSlider.addEventListener('input', updateConfig);
     fontSizeSlider.addEventListener('input', updateConfig);
     spaceSlider.addEventListener('input', updateConfig);
     borderWidthSlider.addEventListener('input', updateConfig);
+
+    // Color Swatch Logic
+    document.querySelectorAll('.brand-swatch').forEach(swatch => {
+      swatch.addEventListener('click', (e) => {
+        document.querySelectorAll('.brand-swatch').forEach(s => s.classList.remove('selected'));
+        e.target.classList.add('selected');
+        currentBrand = e.target.dataset.color;
+        updateConfig();
+      });
+    });
+
+    document.querySelectorAll('.neutral-swatch').forEach(swatch => {
+      swatch.addEventListener('click', (e) => {
+        document.querySelectorAll('.neutral-swatch').forEach(s => s.classList.remove('selected'));
+        e.target.classList.add('selected');
+        currentNeutral = e.target.dataset.color;
+        updateConfig();
+      });
+    });
 
     // Initial update
     updateConfig();
@@ -284,17 +331,28 @@
 
         <div class="control-group">
           <label class="control-label">Accent Color</label>
-          <wa-select id="brand-select" value="indigo">
-            <wa-option value="indigo">Indigo</wa-option>
-            <wa-option value="blue">Blue</wa-option>
-            <wa-option value="purple">Purple</wa-option>
-            <wa-option value="pink">Pink</wa-option>
-            <wa-option value="red">Red</wa-option>
-            <wa-option value="orange">Orange</wa-option>
-            <wa-option value="yellow">Yellow</wa-option>
-            <wa-option value="green">Green</wa-option>
-            <wa-option value="cyan">Cyan</wa-option>
-          </wa-select>
+          <div class="color-picker">
+            <button class="color-swatch brand-swatch" data-color="red" style="--swatch-color: var(--wa-color-red-60);" aria-label="Red"></button>
+            <button class="color-swatch brand-swatch" data-color="orange" style="--swatch-color: var(--wa-color-orange-60);" aria-label="Orange"></button>
+            <button class="color-swatch brand-swatch" data-color="yellow" style="--swatch-color: var(--wa-color-yellow-60);" aria-label="Yellow"></button>
+            <button class="color-swatch brand-swatch" data-color="green" style="--swatch-color: var(--wa-color-green-60);" aria-label="Green"></button>
+            <button class="color-swatch brand-swatch" data-color="cyan" style="--swatch-color: var(--wa-color-cyan-60);" aria-label="Cyan"></button>
+            <button class="color-swatch brand-swatch" data-color="blue" style="--swatch-color: var(--wa-color-blue-60);" aria-label="Blue"></button>
+            <button class="color-swatch brand-swatch selected" data-color="indigo" style="--swatch-color: var(--wa-color-indigo-60);" aria-label="Indigo"></button>
+            <button class="color-swatch brand-swatch" data-color="purple" style="--swatch-color: var(--wa-color-purple-60);" aria-label="Purple"></button>
+            <button class="color-swatch brand-swatch" data-color="pink" style="--swatch-color: var(--wa-color-pink-60);" aria-label="Pink"></button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Neutral Tint</label>
+          <div class="color-picker">
+            <button class="color-swatch neutral-swatch selected" data-color="gray" style="--swatch-color: var(--wa-color-gray-50);" aria-label="Gray"></button>
+            <button class="color-swatch neutral-swatch" data-color="blue" style="--swatch-color: var(--wa-color-blue-40);" aria-label="Blue Tint"></button>
+            <button class="color-swatch neutral-swatch" data-color="purple" style="--swatch-color: var(--wa-color-purple-40);" aria-label="Purple Tint"></button>
+            <button class="color-swatch neutral-swatch" data-color="red" style="--swatch-color: var(--wa-color-red-40);" aria-label="Red Tint"></button>
+            <button class="color-swatch neutral-swatch" data-color="green" style="--swatch-color: var(--wa-color-green-40);" aria-label="Green Tint"></button>
+          </div>
         </div>
 
         <div class="control-group">
