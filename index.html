@@ -210,6 +210,20 @@
     import '@awesome.me/webawesome/dist/components/progress-ring/progress-ring.js';
     import '@awesome.me/webawesome/dist/components/format-date/format-date.js';
     import '@awesome.me/webawesome/dist/components/copy-button/copy-button.js';
+    import '@awesome.me/webawesome/dist/components/qr-code/qr-code.js';
+    import '@awesome.me/webawesome/dist/components/color-picker/color-picker.js';
+    import '@awesome.me/webawesome/dist/components/number-input/number-input.js';
+    import '@awesome.me/webawesome/dist/components/skeleton/skeleton.js';
+    import '@awesome.me/webawesome/dist/components/carousel/carousel.js';
+    import '@awesome.me/webawesome/dist/components/carousel-item/carousel-item.js';
+    import '@awesome.me/webawesome/dist/components/dialog/dialog.js';
+    import '@awesome.me/webawesome/dist/components/drawer/drawer.js';
+    import '@awesome.me/webawesome/dist/components/split-panel/split-panel.js';
+    import '@awesome.me/webawesome/dist/components/format-bytes/format-bytes.js';
+    import '@awesome.me/webawesome/dist/components/format-number/format-number.js';
+    import '@awesome.me/webawesome/dist/components/relative-time/relative-time.js';
+    import '@awesome.me/webawesome/dist/components/popover/popover.js';
+    import '@awesome.me/webawesome/dist/components/animation/animation.js';
     import { registerIconLibrary } from '@awesome.me/webawesome/dist/components/icon/library.js';
 
     import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -1005,6 +1019,84 @@
               </wa-button>
             </div>
           </wa-card>
+
+          <!-- Extra Missing Components -->
+
+          <wa-card appearance="outlined" orientation="vertical">
+            <h3 class="wa-heading-m wa-margin-block-end-m">Data Entry & QR</h3>
+            <div class="wa-stack wa-gap-s">
+              <wa-color-picker value="#00d8ff"></wa-color-picker>
+              <wa-number-input placeholder="Number Input" value="42" step="1"></wa-number-input>
+              <div class="wa-cluster wa-justify-content-center wa-margin-block-start-m">
+                <wa-qr-code value="https://webawesome.com" size="128"></wa-qr-code>
+              </div>
+            </div>
+          </wa-card>
+
+          <wa-card appearance="outlined" orientation="vertical">
+            <h3 class="wa-heading-m wa-margin-block-end-m">Formatting Utils</h3>
+            <ul class="wa-stack wa-gap-2xs">
+              <li><strong>Bytes:</strong> <wa-format-bytes value="1073741824"></wa-format-bytes></li>
+              <li><strong>Number:</strong> <wa-format-number value="1234567.89"></wa-format-number></li>
+              <li><strong>Relative Time:</strong> <wa-relative-time date="2020-01-01"></wa-relative-time></li>
+            </ul>
+          </wa-card>
+
+          <wa-card appearance="outlined" orientation="vertical">
+            <h3 class="wa-heading-m wa-margin-block-end-m">Loading Skeleton</h3>
+            <div class="wa-flank">
+              <wa-skeleton effect="pulse" style="--border-radius: var(--wa-border-radius-circle); width: 3rem; height: 3rem;"></wa-skeleton>
+              <div class="wa-stack wa-gap-3xs">
+                <wa-skeleton effect="pulse" style="width: 80%;"></wa-skeleton>
+                <wa-skeleton effect="pulse" style="width: 60%;"></wa-skeleton>
+              </div>
+            </div>
+          </wa-card>
+
+          <wa-card appearance="outlined" orientation="vertical">
+            <h3 class="wa-heading-m wa-margin-block-end-m">Interactive & Media</h3>
+            <div class="wa-stack wa-gap-m">
+              <wa-popover placement="top">
+                <wa-button slot="anchor">Hover for Popover</wa-button>
+                <wa-card appearance="filled" style="max-width: 250px;">
+                  This is a rich popover attached to the button!
+                </wa-card>
+              </wa-popover>
+
+              <wa-button onclick="document.querySelector('.playground-dialog').show()">Open Dialog</wa-button>
+              <wa-button onclick="document.querySelector('.playground-drawer').show()">Open Drawer</wa-button>
+
+              <wa-carousel pagination navigation style="--aspect-ratio: 16/9; margin-top: var(--wa-space-s);">
+                <wa-carousel-item style="background: var(--wa-color-brand-60); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">Slide 1</wa-carousel-item>
+                <wa-carousel-item style="background: var(--wa-color-accent-60); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">Slide 2</wa-carousel-item>
+                <wa-carousel-item style="background: var(--wa-color-success-60); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">Slide 3</wa-carousel-item>
+              </wa-carousel>
+            </div>
+          </wa-card>
+
+          <wa-card appearance="outlined" orientation="vertical" style="grid-column: span 2;">
+            <h3 class="wa-heading-m wa-margin-block-end-m">Split Panel</h3>
+            <wa-split-panel style="height: 200px; --divider-width: 10px;">
+              <div slot="start" style="height: 100%; display: flex; align-items: center; justify-content: center; background: var(--wa-color-surface-sunken);">
+                Start Panel
+              </div>
+              <div slot="end" style="height: 100%; display: flex; align-items: center; justify-content: center; background: var(--wa-color-surface-dimmed);">
+                End Panel
+              </div>
+            </wa-split-panel>
+          </wa-card>
+
+          <!-- Hidden structural components for the buttons above -->
+          <wa-dialog label="Dialog Heading" class="playground-dialog">
+            <p>This is a standard dialog component. It appears above the page and dims the background.</p>
+            <wa-button slot="footer" variant="brand" onclick="document.querySelector('.playground-dialog').hide()">Close</wa-button>
+          </wa-dialog>
+
+          <wa-drawer label="Drawer Heading" placement="end" class="playground-drawer">
+            <p>This drawer slides in from the right edge of the screen.</p>
+            <wa-button slot="footer" variant="neutral" onclick="document.querySelector('.playground-drawer').hide()">Close</wa-button>
+          </wa-drawer>
+
         </div>
       </section>
 
