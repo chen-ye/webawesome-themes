@@ -182,7 +182,9 @@
     const paletteSelect = document.getElementById('palette-select');
     const brandSelect = document.getElementById('brand-select');
     const radiusSlider = document.getElementById('radius-slider');
-    const scalingSelect = document.getElementById('scaling-select');
+    const fontSizeSlider = document.getElementById('font-size-slider');
+    const spaceSlider = document.getElementById('space-slider');
+    const borderWidthSlider = document.getElementById('border-width-slider');
     const previewArea = document.getElementById('preview-area');
     const configCode = document.getElementById('config-code');
 
@@ -200,11 +202,14 @@
       const radiusScale = radiusSlider.value;
       html.style.setProperty('--wa-border-radius-scale', radiusScale);
 
-      // Update scaling using scale modifiers
-      const scale = scalingSelect.value;
-      previewArea.style.setProperty('--wa-font-size-scale', scale);
-      previewArea.style.setProperty('--wa-space-scale', scale);
-      previewArea.style.setProperty('--wa-border-width-scale', scale);
+      // Update scaling using individual scale modifiers
+      const fontSizeScale = fontSizeSlider.value;
+      const spaceScale = spaceSlider.value;
+      const borderWidthScale = borderWidthSlider.value;
+
+      previewArea.style.setProperty('--wa-font-size-scale', fontSizeScale);
+      previewArea.style.setProperty('--wa-space-scale', spaceScale);
+      previewArea.style.setProperty('--wa-border-width-scale', borderWidthScale);
 
       // Update code view
       configCode.textContent = `<html class="${classes}">`;
@@ -215,7 +220,9 @@
     paletteSelect.addEventListener('change', updateConfig);
     brandSelect.addEventListener('change', updateConfig);
     radiusSlider.addEventListener('input', updateConfig);
-    scalingSelect.addEventListener('change', updateConfig);
+    fontSizeSlider.addEventListener('input', updateConfig);
+    spaceSlider.addEventListener('input', updateConfig);
+    borderWidthSlider.addEventListener('input', updateConfig);
 
     // Initial update
     updateConfig();
@@ -291,12 +298,33 @@
         </div>
 
         <div class="control-group">
-          <label class="control-label">Scaling</label>
-          <wa-select id="scaling-select" value="1">
-            <wa-option value="0.9">90%</wa-option>
-            <wa-option value="1">100%</wa-option>
-            <wa-option value="1.1">110%</wa-option>
-          </wa-select>
+          <label class="control-label">Font Size Scale</label>
+          <wa-slider id="font-size-slider" min="0.5" max="1.5" step="0.1" value="1"></wa-slider>
+          <div style="display: flex; justify-content: space-between; font-size: 10px; margin-top: 4px; color: var(--wa-color-text-quiet);">
+            <span>Small</span>
+            <span>1x</span>
+            <span>Large</span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Spacing Scale</label>
+          <wa-slider id="space-slider" min="0.5" max="1.5" step="0.1" value="1"></wa-slider>
+          <div style="display: flex; justify-content: space-between; font-size: 10px; margin-top: 4px; color: var(--wa-color-text-quiet);">
+            <span>Tight</span>
+            <span>1x</span>
+            <span>Loose</span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Border Width Scale</label>
+          <wa-slider id="border-width-slider" min="0" max="3" step="0.5" value="1"></wa-slider>
+          <div style="display: flex; justify-content: space-between; font-size: 10px; margin-top: 4px; color: var(--wa-color-text-quiet);">
+            <span>None</span>
+            <span>1x</span>
+            <span>Thick</span>
+          </div>
         </div>
       </div>
 
