@@ -210,8 +210,22 @@
     import '@awesome.me/webawesome/dist/components/progress-ring/progress-ring.js';
     import '@awesome.me/webawesome/dist/components/format-date/format-date.js';
     import '@awesome.me/webawesome/dist/components/copy-button/copy-button.js';
+    import { registerIconLibrary } from '@awesome.me/webawesome/dist/components/icon/library.js';
 
     import '@fortawesome/fontawesome-free/css/all.min.css';
+
+    // Register our own icon library resolver to pull FontAwesome Free SVGs from jsdelivr
+    // instead of the ka-f.fontawesome.com CDN which requires Pro or explicit domain whitelisting.
+    // We map all families and variants to "solid" except "brands" to guarantee they load from the Free tier.
+    registerIconLibrary('default', {
+      resolver: (name, family) => {
+        let folder = 'solid';
+        if (family === 'brands') {
+          folder = 'brands';
+        }
+        return `https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.7.1/svgs/${folder}/${name}.svg`;
+      }
+    });
 
     // Set base path so icons and other assets load correctly
     setBasePath('https://cdn.jsdelivr.net/npm/@awesome.me/webawesome@3.2.1/dist');
