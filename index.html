@@ -1086,21 +1086,22 @@
             </wa-split-panel>
           </wa-card>
 
-          <!-- Hidden structural components for the buttons above -->
-          <wa-dialog label="Dialog Heading" class="playground-dialog">
-            <p>This is a standard dialog component. It appears above the page and dims the background.</p>
-            <wa-button slot="footer" variant="brand" onclick="document.querySelector('.playground-dialog').hide()">Close</wa-button>
-          </wa-dialog>
-
-          <wa-drawer label="Drawer Heading" placement="end" class="playground-drawer">
-            <p>This drawer slides in from the right edge of the screen.</p>
-            <wa-button slot="footer" variant="neutral" onclick="document.querySelector('.playground-drawer').hide()">Close</wa-button>
-          </wa-drawer>
-
         </div>
       </section>
 
     </main>
   </div>
+
+  <!-- Overlay components placed at root to avoid CSS containing block issues -->
+  <wa-dialog label="Dialog Heading" class="playground-dialog">
+    <p>This is a standard dialog component. It appears above the page and dims the background.</p>
+    <wa-button slot="footer" variant="brand" onclick="document.querySelector('.playground-dialog').hide()">Close</wa-button>
+  </wa-dialog>
+
+  <wa-drawer label="Drawer Heading" placement="end" class="playground-drawer">
+    <p>This drawer slides in from the right edge of the screen.</p>
+    <wa-button slot="footer" variant="neutral" onclick="document.querySelector('.playground-drawer').hide()">Close</wa-button>
+  </wa-drawer>
+
 </body>
 </html>
