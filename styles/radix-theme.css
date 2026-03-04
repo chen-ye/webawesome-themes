@@ -1,0 +1,292 @@
+@import url('./radix-palette.css');
+
+@layer wa-theme {
+  .wa-theme-radix,
+  .wa-theme-radix.wa-light,
+  .wa-theme-radix .wa-light,
+  .wa-theme-radix.wa-dark .wa-invert,
+  .wa-theme-radix .wa-dark .wa-invert,
+  .wa-light .wa-theme-radix,
+  .wa-dark .wa-theme-radix.wa-invert,
+  .wa-dark .wa-theme-radix .wa-invert {
+    /* Radix UI mapping to Web Awesome Semantics - Light Mode */
+    color-scheme: light;
+    color: var(--wa-color-text-normal);
+
+    --wa-color-surface-raised: white;
+    --wa-color-surface-default: white;
+    --wa-color-surface-lowered: var(--wa-color-neutral-95);
+    --wa-color-surface-border: var(--wa-color-neutral-60);
+
+    --wa-color-text-normal: var(--wa-color-neutral-05);
+    --wa-color-text-quiet: var(--wa-color-neutral-10);
+    --wa-color-text-link: var(--wa-color-brand-40);
+
+    --wa-color-overlay-modal: color-mix(in oklab, var(--wa-color-neutral-05) 50%, transparent);
+    --wa-color-overlay-inline: color-mix(in oklab, var(--wa-color-neutral-80) 25%, transparent);
+
+    --wa-color-focus: var(--wa-color-brand-40);
+
+    --wa-color-brand-fill-quiet: var(--wa-color-brand-95);
+    --wa-color-brand-fill-normal: var(--wa-color-brand-90);
+    --wa-color-brand-fill-loud: var(--wa-color-brand-50);
+    --wa-color-brand-border-quiet: var(--wa-color-brand-80);
+    --wa-color-brand-border-normal: var(--wa-color-brand-60);
+    --wa-color-brand-border-loud: var(--wa-color-brand-40);
+    --wa-color-brand-on-quiet: var(--wa-color-brand-30);
+    --wa-color-brand-on-normal: var(--wa-color-brand-20);
+    --wa-color-brand-on-loud: white;
+
+    --wa-color-success-fill-quiet: var(--wa-color-success-95);
+    --wa-color-success-fill-normal: var(--wa-color-success-90);
+    --wa-color-success-fill-loud: var(--wa-color-success-50);
+    --wa-color-success-border-quiet: var(--wa-color-success-80);
+    --wa-color-success-border-normal: var(--wa-color-success-60);
+    --wa-color-success-border-loud: var(--wa-color-success-40);
+    --wa-color-success-on-quiet: var(--wa-color-success-30);
+    --wa-color-success-on-normal: var(--wa-color-success-20);
+    --wa-color-success-on-loud: white;
+
+    --wa-color-warning-fill-quiet: var(--wa-color-warning-95);
+    --wa-color-warning-fill-normal: var(--wa-color-warning-90);
+    --wa-color-warning-fill-loud: var(--wa-color-warning-50);
+    --wa-color-warning-border-quiet: var(--wa-color-warning-80);
+    --wa-color-warning-border-normal: var(--wa-color-warning-60);
+    --wa-color-warning-border-loud: var(--wa-color-warning-40);
+    --wa-color-warning-on-quiet: var(--wa-color-warning-30);
+    --wa-color-warning-on-normal: var(--wa-color-warning-20);
+    --wa-color-warning-on-loud: var(--wa-color-neutral-05);
+
+    --wa-color-danger-fill-quiet: var(--wa-color-danger-95);
+    --wa-color-danger-fill-normal: var(--wa-color-danger-90);
+    --wa-color-danger-fill-loud: var(--wa-color-danger-50);
+    --wa-color-danger-border-quiet: var(--wa-color-danger-80);
+    --wa-color-danger-border-normal: var(--wa-color-danger-60);
+    --wa-color-danger-border-loud: var(--wa-color-danger-40);
+    --wa-color-danger-on-quiet: var(--wa-color-danger-30);
+    --wa-color-danger-on-normal: var(--wa-color-danger-20);
+    --wa-color-danger-on-loud: white;
+
+    --wa-color-neutral-fill-quiet: var(--wa-color-neutral-95);
+    --wa-color-neutral-fill-normal: var(--wa-color-neutral-90);
+    --wa-color-neutral-fill-loud: var(--wa-color-neutral-50);
+    --wa-color-neutral-border-quiet: var(--wa-color-neutral-80);
+    --wa-color-neutral-border-normal: var(--wa-color-neutral-60);
+    --wa-color-neutral-border-loud: var(--wa-color-neutral-40);
+    --wa-color-neutral-on-quiet: var(--wa-color-neutral-30);
+    --wa-color-neutral-on-normal: var(--wa-color-neutral-20);
+    --wa-color-neutral-on-loud: white;
+
+    /* Radix Shadows (Light mode) */
+    --wa-shadow-s: 0 1px 3px 0 var(--wa-color-gray-a2);
+    --wa-shadow-m:
+      0 8px 40px var(--wa-color-black-a1),
+      0 12px 32px -16px var(--wa-color-gray-a3);
+    --wa-shadow-l:
+      0 12px 60px var(--wa-color-black-a3),
+      0 16px 64px var(--wa-color-gray-a2),
+      0 16px 36px -20px var(--wa-color-gray-a7);
+  }
+
+  .wa-theme-radix.wa-dark,
+  .wa-theme-radix .wa-dark,
+  .wa-theme-radix.wa-invert,
+  .wa-theme-radix .wa-invert,
+  .wa-dark .wa-theme-radix,
+  .wa-light .wa-theme-radix.wa-invert,
+  .wa-light .wa-theme-radix .wa-invert {
+    /* Radix UI mapping to Web Awesome Semantics - Dark Mode */
+    color-scheme: dark;
+    color: var(--wa-color-text-normal);
+
+    --wa-color-surface-raised: var(--wa-color-neutral-10);
+    --wa-color-surface-default: var(--wa-color-neutral-05);
+    --wa-color-surface-lowered: color-mix(in oklab, var(--wa-color-surface-default), black 20%);
+    --wa-color-surface-border: var(--wa-color-neutral-40); /* Step 6 */
+
+    --wa-color-text-normal: var(--wa-color-neutral-95);
+    --wa-color-text-quiet: var(--wa-color-neutral-60);
+    --wa-color-text-link: var(--wa-color-brand-80);
+
+    --wa-color-overlay-modal: color-mix(in oklab, black 60%, transparent);
+    --wa-color-overlay-inline: color-mix(in oklab, var(--wa-color-neutral-50) 10%, transparent);
+
+    --wa-color-focus: var(--wa-color-brand-80);
+
+    --wa-color-brand-fill-quiet: var(--wa-color-brand-10);
+    --wa-color-brand-fill-normal: var(--wa-color-brand-20);
+    --wa-color-brand-fill-loud: var(--wa-color-brand-50);
+    --wa-color-brand-border-quiet: var(--wa-color-brand-20);
+    --wa-color-brand-border-normal: var(--wa-color-brand-30);
+    --wa-color-brand-border-loud: var(--wa-color-brand-40);
+    --wa-color-brand-on-quiet: var(--wa-color-brand-60);
+    --wa-color-brand-on-normal: var(--wa-color-brand-70);
+    --wa-color-brand-on-loud: white;
+
+    --wa-color-success-fill-quiet: var(--wa-color-success-10);
+    --wa-color-success-fill-normal: var(--wa-color-success-20);
+    --wa-color-success-fill-loud: var(--wa-color-success-50);
+    --wa-color-success-border-quiet: var(--wa-color-success-20);
+    --wa-color-success-border-normal: var(--wa-color-success-30);
+    --wa-color-success-border-loud: var(--wa-color-success-40);
+    --wa-color-success-on-quiet: var(--wa-color-success-60);
+    --wa-color-success-on-normal: var(--wa-color-success-70);
+    --wa-color-success-on-loud: white;
+
+    --wa-color-warning-fill-quiet: var(--wa-color-warning-10);
+    --wa-color-warning-fill-normal: var(--wa-color-warning-20);
+    --wa-color-warning-fill-loud: var(--wa-color-warning-50);
+    --wa-color-warning-border-quiet: var(--wa-color-warning-20);
+    --wa-color-warning-border-normal: var(--wa-color-warning-30);
+    --wa-color-warning-border-loud: var(--wa-color-warning-40);
+    --wa-color-warning-on-quiet: var(--wa-color-warning-60);
+    --wa-color-warning-on-normal: var(--wa-color-warning-70);
+    --wa-color-warning-on-loud: white;
+
+    --wa-color-danger-fill-quiet: var(--wa-color-danger-10);
+    --wa-color-danger-fill-normal: var(--wa-color-danger-20);
+    --wa-color-danger-fill-loud: var(--wa-color-danger-50);
+    --wa-color-danger-border-quiet: var(--wa-color-danger-20);
+    --wa-color-danger-border-normal: var(--wa-color-danger-30);
+    --wa-color-danger-border-loud: var(--wa-color-danger-40);
+    --wa-color-danger-on-quiet: var(--wa-color-danger-60);
+    --wa-color-danger-on-normal: var(--wa-color-danger-70);
+    --wa-color-danger-on-loud: white;
+
+    --wa-color-neutral-fill-quiet: var(--wa-color-neutral-10);
+    --wa-color-neutral-fill-normal: var(--wa-color-neutral-20);
+    --wa-color-neutral-fill-loud: var(--wa-color-neutral-90);
+    --wa-color-neutral-border-quiet: var(--wa-color-neutral-20);
+    --wa-color-neutral-border-normal: var(--wa-color-neutral-30);
+    --wa-color-neutral-border-loud: var(--wa-color-neutral-40);
+    --wa-color-neutral-on-quiet: var(--wa-color-neutral-60);
+    --wa-color-neutral-on-normal: var(--wa-color-neutral-70);
+    --wa-color-neutral-on-loud: var(--wa-color-neutral-05);
+
+    /* Radix Shadows (Dark mode) */
+    --wa-shadow-s:
+      0 0 0 1px var(--wa-color-gray-a6),
+      0 1px 3px 0 var(--wa-color-black-a2);
+    --wa-shadow-m:
+      0 0 0 1px var(--wa-color-gray-a6),
+      0 8px 40px var(--wa-color-black-a3),
+      0 12px 32px -16px var(--wa-color-gray-a3);
+    /* In dark mode radix layers black alphas instead of gray alphas for the diffuse part */
+    --wa-shadow-l:
+      0 0 0 1px var(--wa-color-gray-a6),
+      0 12px 60px rgba(0,0,0,0.6),
+      0 16px 64px rgba(0,0,0,0.6),
+      0 16px 36px -20px var(--wa-color-black-a3);
+  }
+
+  .wa-theme-radix,
+  .wa-theme-radix.wa-light,
+  .wa-theme-radix .wa-light,
+  .wa-theme-radix.wa-dark,
+  .wa-theme-radix .wa-dark,
+  .wa-theme-radix.wa-invert,
+  .wa-theme-radix .wa-invert {
+    font-family: var(--wa-font-family-body);
+
+    /* #region Fonts ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    --wa-font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+      sans-serif;
+    --wa-font-family-heading: var(--wa-font-family-body);
+
+    --wa-font-weight-body: 400;
+    --wa-font-weight-heading: 600;
+    --wa-font-weight-action: 500;
+    /* #endregion */
+
+    /* #region Rounding ~~~~~~~~~~~~~~~~~~~~~~~~~ */
+    --wa-border-radius-scale: 1;
+    --wa-border-radius-s: calc(var(--wa-border-radius-scale) * 4px);
+    --wa-border-radius-m: calc(var(--wa-border-radius-scale) * 6px);
+    --wa-border-radius-l: calc(var(--wa-border-radius-scale) * 8px);
+    /* #endregion */
+  }
+}
+
+@layer wa-theme-dimension {
+  .wa-theme-radix {
+    wa-button,
+    button,
+    input[type='button'],
+    input[type='reset'],
+    input[type='submit'] {
+      --wa-color-shadow: transparent;
+      --wa-transition-slow: 0;
+      /* Flattening Web Awesome standard 3D styles to achieve Radix flat look */
+      &:where(:not(wa-button)),
+      &::part(base) {
+        box-shadow: none !important;
+        margin-bottom: 0 !important;
+        margin-right: 0 !important;
+      }
+
+      &:where(.wa-accent, [appearance='accent']) {
+        &:where(:not(wa-button)),
+        &::part(base) {
+           box-shadow: none !important;
+        }
+      }
+
+      &:not([disabled]):not(:disabled):active {
+        &:where(:not(wa-button)),
+        &::part(base) {
+          transform: scale(0.98);
+        }
+      }
+    }
+
+    :is(
+        input:where(
+            :not(
+              [type='button'],
+              [type='checkbox'],
+              [type='color'],
+              [type='file'],
+              [type='hidden'],
+              [type='image'],
+              [type='radio'],
+              [type='range'],
+              [type='reset'],
+              [type='submit']
+            )
+          ),
+        select,
+        textarea,
+        wa-input,
+        wa-select,
+        wa-textarea
+      ):not(:focus):not([appearance='filled']) {
+      &:where(:not(wa-input):not(wa-select):not(wa-textarea)),
+      &:where(wa-input)::part(base),
+      &:where(wa-select)::part(combobox),
+      &:where(wa-textarea)::part(base) {
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+
+@layer wa-theme-overrides {
+  .wa-theme-radix {
+    wa-badge {
+      border-radius: var(--wa-border-radius-m);
+      font-weight: 500;
+      text-transform: none;
+    }
+    wa-card {
+      box-shadow: var(--wa-shadow-s);
+    }
+    wa-dropdown::part(panel),
+    wa-popover::part(popover),
+    wa-dialog::part(panel) {
+      box-shadow: var(--wa-shadow-l) !important;
+    }
+    wa-select::part(listbox) {
+      box-shadow: var(--wa-shadow-m) !important;
+    }
+  }
+}

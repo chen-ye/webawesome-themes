@@ -1,0 +1,274 @@
+@layer wa-color-palette {
+  .wa-palette-radix {
+
+    /* gray (Radix gray, light map) */
+    --wa-color-gray-95: #fcfcfc;
+    --wa-color-gray-90: #f9f9f9;
+    --wa-color-gray-80: #f0f0f0;
+    --wa-color-gray-70: #e8e8e8;
+    --wa-color-gray-60: #e0e0e0;
+    --wa-color-gray-50: #d9d9d9;
+    --wa-color-gray-40: #cecece;
+    --wa-color-gray-30: #bbbbbb;
+    --wa-color-gray-20: #8d8d8d;
+    --wa-color-gray-10: #838383;
+    --wa-color-gray-05: #646464;
+    --wa-color-gray: var(--wa-color-gray-30);
+    --wa-color-gray-key: 30;
+
+    /* mauve (Radix mauve, light map) */
+    --wa-color-mauve-95: #fdfcfd;
+    --wa-color-mauve-90: #faf9fb;
+    --wa-color-mauve-80: #f2eff3;
+    --wa-color-mauve-70: #eae7ec;
+    --wa-color-mauve-60: #e3dfe6;
+    --wa-color-mauve-50: #dbd8e0;
+    --wa-color-mauve-40: #d0cdd7;
+    --wa-color-mauve-30: #bcbac7;
+    --wa-color-mauve-20: #8e8c99;
+    --wa-color-mauve-10: #84828e;
+    --wa-color-mauve-05: #65636d;
+    --wa-color-mauve: var(--wa-color-mauve-30);
+    --wa-color-mauve-key: 30;
+
+    /* slate (Radix slate, light map) */
+    --wa-color-slate-95: #fcfcfd;
+    --wa-color-slate-90: #f9f9fb;
+    --wa-color-slate-80: #f0f0f3;
+    --wa-color-slate-70: #e8e8ec;
+    --wa-color-slate-60: #e0e1e6;
+    --wa-color-slate-50: #d9d9e0;
+    --wa-color-slate-40: #cdced6;
+    --wa-color-slate-30: #b9bbc6;
+    --wa-color-slate-20: #8b8d98;
+    --wa-color-slate-10: #80838d;
+    --wa-color-slate-05: #60646c;
+    --wa-color-slate: var(--wa-color-slate-30);
+    --wa-color-slate-key: 30;
+
+    /* sage (Radix sage, light map) */
+    --wa-color-sage-95: #fbfdfc;
+    --wa-color-sage-90: #f7f9f8;
+    --wa-color-sage-80: #eef1f0;
+    --wa-color-sage-70: #e6e9e8;
+    --wa-color-sage-60: #dfe2e0;
+    --wa-color-sage-50: #d7dad9;
+    --wa-color-sage-40: #cbcfcd;
+    --wa-color-sage-30: #b8bcba;
+    --wa-color-sage-20: #868e8b;
+    --wa-color-sage-10: #7c8481;
+    --wa-color-sage-05: #5f6563;
+    --wa-color-sage: var(--wa-color-sage-30);
+    --wa-color-sage-key: 30;
+
+    /* olive (Radix olive, light map) */
+    --wa-color-olive-95: #fcfdfc;
+    --wa-color-olive-90: #f8faf8;
+    --wa-color-olive-80: #eff1ef;
+    --wa-color-olive-70: #e7e9e7;
+    --wa-color-olive-60: #dfe2df;
+    --wa-color-olive-50: #d7dad7;
+    --wa-color-olive-40: #cccfcc;
+    --wa-color-olive-30: #b9bcb8;
+    --wa-color-olive-20: #898e87;
+    --wa-color-olive-10: #7f847d;
+    --wa-color-olive-05: #60655f;
+    --wa-color-olive: var(--wa-color-olive-30);
+    --wa-color-olive-key: 30;
+
+    /* sand (Radix sand, light map) */
+    --wa-color-sand-95: #fdfdfc;
+    --wa-color-sand-90: #f9f9f8;
+    --wa-color-sand-80: #f1f0ef;
+    --wa-color-sand-70: #e9e8e6;
+    --wa-color-sand-60: #e2e1de;
+    --wa-color-sand-50: #dad9d6;
+    --wa-color-sand-40: #cfceca;
+    --wa-color-sand-30: #bcbbb5;
+    --wa-color-sand-20: #8d8d86;
+    --wa-color-sand-10: #82827c;
+    --wa-color-sand-05: #63635e;
+    --wa-color-sand: var(--wa-color-sand-30);
+    --wa-color-sand-key: 30;
+  }
+
+  .wa-dark.wa-palette-radix, .wa-dark .wa-palette-radix {
+
+    /* gray (Radix gray, dark map) */
+    --wa-color-gray-05: #191919;
+    --wa-color-gray-10: #222222;
+    --wa-color-gray-20: #2a2a2a;
+    --wa-color-gray-30: #313131;
+    --wa-color-gray-40: #3a3a3a;
+    --wa-color-gray-50: #484848;
+    --wa-color-gray-60: #606060;
+    --wa-color-gray-70: #6e6e6e;
+    --wa-color-gray-80: #7b7b7b;
+    --wa-color-gray-90: #b4b4b4;
+    --wa-color-gray-95: #eeeeee;
+    --wa-color-gray: var(--wa-color-gray-70);
+    --wa-color-gray-key: 70;
+
+    /* mauve (Radix mauve, dark map) */
+    --wa-color-mauve-05: #1a191b;
+    --wa-color-mauve-10: #232225;
+    --wa-color-mauve-20: #2b292d;
+    --wa-color-mauve-30: #323035;
+    --wa-color-mauve-40: #3c393f;
+    --wa-color-mauve-50: #49474e;
+    --wa-color-mauve-60: #625f69;
+    --wa-color-mauve-70: #6f6d78;
+    --wa-color-mauve-80: #7c7a85;
+    --wa-color-mauve-90: #b5b2bc;
+    --wa-color-mauve-95: #eeeef0;
+    --wa-color-mauve: var(--wa-color-mauve-70);
+    --wa-color-mauve-key: 70;
+
+    /* slate (Radix slate, dark map) */
+    --wa-color-slate-05: #18191b;
+    --wa-color-slate-10: #212225;
+    --wa-color-slate-20: #272a2d;
+    --wa-color-slate-30: #2e3135;
+    --wa-color-slate-40: #363a3f;
+    --wa-color-slate-50: #43484e;
+    --wa-color-slate-60: #5a6169;
+    --wa-color-slate-70: #696e77;
+    --wa-color-slate-80: #777b84;
+    --wa-color-slate-90: #b0b4ba;
+    --wa-color-slate-95: #edeef0;
+    --wa-color-slate: var(--wa-color-slate-70);
+    --wa-color-slate-key: 70;
+
+    /* sage (Radix sage, dark map) */
+    --wa-color-sage-05: #171918;
+    --wa-color-sage-10: #202221;
+    --wa-color-sage-20: #272a29;
+    --wa-color-sage-30: #2e3130;
+    --wa-color-sage-40: #373b39;
+    --wa-color-sage-50: #444947;
+    --wa-color-sage-60: #5b625f;
+    --wa-color-sage-70: #63706b;
+    --wa-color-sage-80: #717d79;
+    --wa-color-sage-90: #adb5b2;
+    --wa-color-sage-95: #eceeed;
+    --wa-color-sage: var(--wa-color-sage-70);
+    --wa-color-sage-key: 70;
+
+    /* olive (Radix olive, dark map) */
+    --wa-color-olive-05: #181917;
+    --wa-color-olive-10: #212220;
+    --wa-color-olive-20: #282a27;
+    --wa-color-olive-30: #2f312e;
+    --wa-color-olive-40: #383a36;
+    --wa-color-olive-50: #454843;
+    --wa-color-olive-60: #5c625b;
+    --wa-color-olive-70: #687066;
+    --wa-color-olive-80: #767d74;
+    --wa-color-olive-90: #afb5ad;
+    --wa-color-olive-95: #eceeec;
+    --wa-color-olive: var(--wa-color-olive-70);
+    --wa-color-olive-key: 70;
+
+    /* sand (Radix sand, dark map) */
+    --wa-color-sand-05: #191918;
+    --wa-color-sand-10: #222221;
+    --wa-color-sand-20: #2a2a28;
+    --wa-color-sand-30: #31312e;
+    --wa-color-sand-40: #3b3a37;
+    --wa-color-sand-50: #494844;
+    --wa-color-sand-60: #62605b;
+    --wa-color-sand-70: #6f6d66;
+    --wa-color-sand-80: #7c7b74;
+    --wa-color-sand-90: #b5b3ad;
+    --wa-color-sand-95: #eeeeec;
+    --wa-color-sand: var(--wa-color-sand-70);
+    --wa-color-sand-key: 70;
+  }
+}
+
+@layer wa-color-variant {
+  .wa-palette-radix .wa-neutral-gray {
+    --wa-color-neutral-95: var(--wa-color-gray-95);
+    --wa-color-neutral-90: var(--wa-color-gray-90);
+    --wa-color-neutral-80: var(--wa-color-gray-80);
+    --wa-color-neutral-70: var(--wa-color-gray-70);
+    --wa-color-neutral-60: var(--wa-color-gray-60);
+    --wa-color-neutral-50: var(--wa-color-gray-50);
+    --wa-color-neutral-40: var(--wa-color-gray-40);
+    --wa-color-neutral-30: var(--wa-color-gray-30);
+    --wa-color-neutral-20: var(--wa-color-gray-20);
+    --wa-color-neutral-10: var(--wa-color-gray-10);
+    --wa-color-neutral-05: var(--wa-color-gray-05);
+    --wa-color-neutral: var(--wa-color-gray);
+  }
+  .wa-palette-radix .wa-neutral-mauve {
+    --wa-color-neutral-95: var(--wa-color-mauve-95);
+    --wa-color-neutral-90: var(--wa-color-mauve-90);
+    --wa-color-neutral-80: var(--wa-color-mauve-80);
+    --wa-color-neutral-70: var(--wa-color-mauve-70);
+    --wa-color-neutral-60: var(--wa-color-mauve-60);
+    --wa-color-neutral-50: var(--wa-color-mauve-50);
+    --wa-color-neutral-40: var(--wa-color-mauve-40);
+    --wa-color-neutral-30: var(--wa-color-mauve-30);
+    --wa-color-neutral-20: var(--wa-color-mauve-20);
+    --wa-color-neutral-10: var(--wa-color-mauve-10);
+    --wa-color-neutral-05: var(--wa-color-mauve-05);
+    --wa-color-neutral: var(--wa-color-mauve);
+  }
+  .wa-palette-radix .wa-neutral-slate {
+    --wa-color-neutral-95: var(--wa-color-slate-95);
+    --wa-color-neutral-90: var(--wa-color-slate-90);
+    --wa-color-neutral-80: var(--wa-color-slate-80);
+    --wa-color-neutral-70: var(--wa-color-slate-70);
+    --wa-color-neutral-60: var(--wa-color-slate-60);
+    --wa-color-neutral-50: var(--wa-color-slate-50);
+    --wa-color-neutral-40: var(--wa-color-slate-40);
+    --wa-color-neutral-30: var(--wa-color-slate-30);
+    --wa-color-neutral-20: var(--wa-color-slate-20);
+    --wa-color-neutral-10: var(--wa-color-slate-10);
+    --wa-color-neutral-05: var(--wa-color-slate-05);
+    --wa-color-neutral: var(--wa-color-slate);
+  }
+  .wa-palette-radix .wa-neutral-sage {
+    --wa-color-neutral-95: var(--wa-color-sage-95);
+    --wa-color-neutral-90: var(--wa-color-sage-90);
+    --wa-color-neutral-80: var(--wa-color-sage-80);
+    --wa-color-neutral-70: var(--wa-color-sage-70);
+    --wa-color-neutral-60: var(--wa-color-sage-60);
+    --wa-color-neutral-50: var(--wa-color-sage-50);
+    --wa-color-neutral-40: var(--wa-color-sage-40);
+    --wa-color-neutral-30: var(--wa-color-sage-30);
+    --wa-color-neutral-20: var(--wa-color-sage-20);
+    --wa-color-neutral-10: var(--wa-color-sage-10);
+    --wa-color-neutral-05: var(--wa-color-sage-05);
+    --wa-color-neutral: var(--wa-color-sage);
+  }
+  .wa-palette-radix .wa-neutral-olive {
+    --wa-color-neutral-95: var(--wa-color-olive-95);
+    --wa-color-neutral-90: var(--wa-color-olive-90);
+    --wa-color-neutral-80: var(--wa-color-olive-80);
+    --wa-color-neutral-70: var(--wa-color-olive-70);
+    --wa-color-neutral-60: var(--wa-color-olive-60);
+    --wa-color-neutral-50: var(--wa-color-olive-50);
+    --wa-color-neutral-40: var(--wa-color-olive-40);
+    --wa-color-neutral-30: var(--wa-color-olive-30);
+    --wa-color-neutral-20: var(--wa-color-olive-20);
+    --wa-color-neutral-10: var(--wa-color-olive-10);
+    --wa-color-neutral-05: var(--wa-color-olive-05);
+    --wa-color-neutral: var(--wa-color-olive);
+  }
+  .wa-palette-radix .wa-neutral-sand {
+    --wa-color-neutral-95: var(--wa-color-sand-95);
+    --wa-color-neutral-90: var(--wa-color-sand-90);
+    --wa-color-neutral-80: var(--wa-color-sand-80);
+    --wa-color-neutral-70: var(--wa-color-sand-70);
+    --wa-color-neutral-60: var(--wa-color-sand-60);
+    --wa-color-neutral-50: var(--wa-color-sand-50);
+    --wa-color-neutral-40: var(--wa-color-sand-40);
+    --wa-color-neutral-30: var(--wa-color-sand-30);
+    --wa-color-neutral-20: var(--wa-color-sand-20);
+    --wa-color-neutral-10: var(--wa-color-sand-10);
+    --wa-color-neutral-05: var(--wa-color-sand-05);
+    --wa-color-neutral: var(--wa-color-sand);
+  }
+}
