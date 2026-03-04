@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "webawesome": {
+      "source": "/Volumes/Projects/public/webawesome-theme-modern/node_modules/@awesome.me/webawesome/dist/skills/webawesome",
+      "sourceType": "local",
+      "computedHash": "ff39db995627fe13d8e97fd9db2db8bad8702460d761786a4f0fa33c50f2adc7"
+    }
+  }
+}

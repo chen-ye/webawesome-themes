@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" class="wa-theme-default">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Awesome Playground</title>
+
+  <style>
+    :root {
+      --sidebar-width: 300px;
+    }
+
+    /* Prevent FOUC */
+    :not(:defined) {
+      display: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--wa-font-family-body);
+      background-color: var(--wa-color-surface-default);
+      color: var(--wa-color-text-normal);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    header {
+      padding: var(--wa-space-m) var(--wa-space-l);
+      border-bottom: var(--wa-border-width-s) solid var(--wa-color-surface-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--wa-color-surface-raised);
+    }
+
+    .header-title {
+      font-size: var(--wa-font-size-l);
+      font-weight: var(--wa-font-weight-bold);
+      display: flex;
+      align-items: center;
+      gap: var(--wa-space-s);
+    }
+
+    .main-layout {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: var(--sidebar-width);
+      border-right: var(--wa-border-width-s) solid var(--wa-color-surface-border);
+      padding: var(--wa-space-l);
+      overflow-y: auto;
+      background-color: var(--wa-color-surface-lowered);
+    }
+
+    .preview-area {
+      flex: 1;
+      padding: var(--wa-space-xl);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--wa-space-3xl);
+
+      /* Scale variables applied here */
+      --wa-font-size-scale: 1;
+      --wa-space-scale: 1;
+      --wa-border-width-scale: 1;
+      --wa-border-radius-scale: 1;
+    }
+
+    .section-title {
+      font-size: var(--wa-font-size-s);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--wa-color-text-quiet);
+      margin-bottom: var(--wa-space-l);
+      border-bottom: var(--wa-border-width-s) solid var(--wa-color-surface-border);
+      padding-bottom: var(--wa-space-3xs);
+    }
+
+    .wa-grid {
+      display: grid;
+      gap: var(--wa-space-l);
+    }
+
+    .config-view {
+      margin-top: auto;
+      padding: var(--wa-space-l);
+      background-color: var(--wa-color-neutral-95);
+      border-top: var(--wa-border-width-s) solid var(--wa-color-surface-border);
+      font-family: var(--wa-font-family-code);
+      font-size: var(--wa-font-size-2xs);
+      white-space: pre-wrap;
+    }
+
+    .wa-dark .config-view {
+      background-color: var(--wa-color-neutral-05);
+    }
+
+    .control-group {
+      margin-bottom: var(--wa-space-xl);
+    }
+
+    .control-label {
+      display: block;
+      font-size: var(--wa-font-size-s);
+      font-weight: var(--wa-font-weight-semibold);
+      margin-bottom: var(--wa-space-s);
+    }
+
+    .theme-panel-section {
+      margin-bottom: var(--wa-space-3xl);
+    }
+
+    .theme-panel-title {
+      font-size: var(--wa-font-size-m);
+      font-weight: var(--wa-font-weight-bold);
+      margin-bottom: var(--wa-space-m);
+    }
+  </style>
+
+  <script type="module">
+    // Direct imports for Vite to resolve
+    import '@awesome.me/webawesome/dist/styles/webawesome.css';
+    import '@awesome.me/webawesome/dist/styles/themes/awesome.css';
+    import '@awesome.me/webawesome/dist/styles/themes/shoelace.css';
+    import '@awesome.me/webawesome/dist/styles/color/palettes/bright.css';
+    import '@awesome.me/webawesome/dist/styles/color/palettes/shoelace.css';
+    import '@awesome.me/webawesome/dist/styles/color/variants/brand.css';
+    import '@awesome.me/webawesome/dist/styles/color/variants/success.css';
+    import '@awesome.me/webawesome/dist/styles/color/variants/warning.css';
+    import '@awesome.me/webawesome/dist/styles/color/variants/danger.css';
+    import '@awesome.me/webawesome/dist/styles/color/variants/neutral.css';
+    import { setBasePath } from '@awesome.me/webawesome/dist/webawesome.js';
+
+    // Explicitly import components used in the playground
+    import '@awesome.me/webawesome/dist/components/icon/icon.js';
+    import '@awesome.me/webawesome/dist/components/button/button.js';
+    import '@awesome.me/webawesome/dist/components/button-group/button-group.js';
+    import '@awesome.me/webawesome/dist/components/switch/switch.js';
+    import '@awesome.me/webawesome/dist/components/select/select.js';
+    import '@awesome.me/webawesome/dist/components/option/option.js';
+    import '@awesome.me/webawesome/dist/components/slider/slider.js';
+    import '@awesome.me/webawesome/dist/components/dropdown/dropdown.js';
+    import '@awesome.me/webawesome/dist/components/dropdown-item/dropdown-item.js';
+    import '@awesome.me/webawesome/dist/components/divider/divider.js';
+    import '@awesome.me/webawesome/dist/components/avatar/avatar.js';
+    import '@awesome.me/webawesome/dist/components/tab-group/tab-group.js';
+    import '@awesome.me/webawesome/dist/components/tab/tab.js';
+    import '@awesome.me/webawesome/dist/components/tab-panel/tab-panel.js';
+    import '@awesome.me/webawesome/dist/components/breadcrumb/breadcrumb.js';
+    import '@awesome.me/webawesome/dist/components/breadcrumb-item/breadcrumb-item.js';
+    import '@awesome.me/webawesome/dist/components/tree/tree.js';
+    import '@awesome.me/webawesome/dist/components/tree-item/tree-item.js';
+    import '@awesome.me/webawesome/dist/components/input/input.js';
+    import '@awesome.me/webawesome/dist/components/checkbox/checkbox.js';
+    import '@awesome.me/webawesome/dist/components/radio-group/radio-group.js';
+    import '@awesome.me/webawesome/dist/components/radio/radio.js';
+    import '@awesome.me/webawesome/dist/components/textarea/textarea.js';
+    import '@awesome.me/webawesome/dist/components/rating/rating.js';
+    import '@awesome.me/webawesome/dist/components/callout/callout.js';
+    import '@awesome.me/webawesome/dist/components/badge/badge.js';
+    import '@awesome.me/webawesome/dist/components/tag/tag.js';
+    import '@awesome.me/webawesome/dist/components/progress-bar/progress-bar.js';
+    import '@awesome.me/webawesome/dist/components/spinner/spinner.js';
+    import '@awesome.me/webawesome/dist/components/card/card.js';
+    import '@awesome.me/webawesome/dist/components/details/details.js';
+
+    import '@fortawesome/fontawesome-free/css/all.min.css';
+
+    // Set base path so icons and other assets load correctly
+    setBasePath('https://cdn.jsdelivr.net/npm/@awesome.me/webawesome@3.2.1/dist');
+
+    const html = document.documentElement;
+    const appearanceToggle = document.getElementById('appearance-toggle');
+    const themeSelect = document.getElementById('theme-select');
+    const paletteSelect = document.getElementById('palette-select');
+    const brandSelect = document.getElementById('brand-select');
+    const radiusSlider = document.getElementById('radius-slider');
+    const scalingSelect = document.getElementById('scaling-select');
+    const previewArea = document.getElementById('preview-area');
+    const configCode = document.getElementById('config-code');
+
+    const radii = ['square', 's', 'm', 'l', 'pill'];
+
+    function updateConfig() {
+      const themeClass = themeSelect.value === 'default' ? 'wa-theme-default' : `wa-theme-${themeSelect.value}`;
+      const paletteClass = paletteSelect.value === 'default' ? '' : `wa-palette-${paletteSelect.value}`;
+      const brandClass = brandSelect.value === 'indigo' ? '' : `wa-brand-${brandSelect.value}`;
+      const darkClass = appearanceToggle.checked ? 'wa-dark' : '';
+
+      const classes = [themeClass, paletteClass, brandClass, darkClass].filter(Boolean).join(' ');
+
+      html.className = classes;
+
+      // Update radius
+      const radiusValue = radii[radiusSlider.value];
+      html.style.setProperty('--wa-border-radius-m', `var(--wa-border-radius-${radiusValue})`);
+
+      // Update scaling using scale modifiers
+      const scale = scalingSelect.value;
+      previewArea.style.setProperty('--wa-font-size-scale', scale);
+      previewArea.style.setProperty('--wa-space-scale', scale);
+      previewArea.style.setProperty('--wa-border-width-scale', scale);
+      previewArea.style.setProperty('--wa-border-radius-scale', scale);
+
+      // Update code view
+      configCode.textContent = `<html class="${classes}">`;
+    }
+
+    appearanceToggle.addEventListener('change', updateConfig);
+    themeSelect.addEventListener('change', updateConfig);
+    paletteSelect.addEventListener('change', updateConfig);
+    brandSelect.addEventListener('change', updateConfig);
+    radiusSlider.addEventListener('input', updateConfig);
+    scalingSelect.addEventListener('change', updateConfig);
+
+    // Initial update
+    updateConfig();
+
+    console.log("Web Awesome Playground Initialized with Vite");
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="header-title">
+      <wa-icon name="wand-magic-sparkles" style="color: var(--wa-color-brand-60);"></wa-icon>
+      Web Awesome Playground
+    </div>
+    <div class="header-actions">
+      <wa-button href="https://webawesome.com" target="_blank" size="small" variant="neutral" appearance="outlined">
+        <wa-icon slot="start" name="house"></wa-icon>
+        Docs
+      </wa-button>
+    </div>
+  </header>
+
+  <div class="main-layout">
+    <aside class="sidebar">
+      <div class="theme-panel-section">
+        <div class="theme-panel-title">Theme Settings</div>
+
+        <div class="control-group">
+          <wa-switch id="appearance-toggle">Dark Mode</wa-switch>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Theme</label>
+          <wa-select id="theme-select" value="default">
+            <wa-option value="default">Default</wa-option>
+            <wa-option value="awesome">Awesome</wa-option>
+            <wa-option value="shoelace">Shoelace</wa-option>
+          </wa-select>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Palette</label>
+          <wa-select id="palette-select" value="default">
+            <wa-option value="default">Default</wa-option>
+            <wa-option value="bright">Bright</wa-option>
+            <wa-option value="shoelace">Shoelace</wa-option>
+          </wa-select>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Radius</label>
+          <wa-slider id="radius-slider" min="0" max="4" step="1" value="2"></wa-slider>
+          <div style="display: flex; justify-content: space-between; font-size: 10px; margin-top: 4px; color: var(--wa-color-text-quiet);">
+            <span>None</span>
+            <span>Pill</span>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Accent Color</label>
+          <wa-select id="brand-select" value="indigo">
+            <wa-option value="indigo">Indigo</wa-option>
+            <wa-option value="blue">Blue</wa-option>
+            <wa-option value="purple">Purple</wa-option>
+            <wa-option value="pink">Pink</wa-option>
+            <wa-option value="red">Red</wa-option>
+            <wa-option value="orange">Orange</wa-option>
+            <wa-option value="yellow">Yellow</wa-option>
+            <wa-option value="green">Green</wa-option>
+            <wa-option value="cyan">Cyan</wa-option>
+          </wa-select>
+        </div>
+
+        <div class="control-group">
+          <label class="control-label">Scaling</label>
+          <wa-select id="scaling-select" value="1">
+            <wa-option value="0.9">90%</wa-option>
+            <wa-option value="1">100%</wa-option>
+            <wa-option value="1.1">110%</wa-option>
+          </wa-select>
+        </div>
+      </div>
+
+      <div class="config-view" id="config-code">
+        &lt;html class="wa-theme-default"&gt;
+      </div>
+    </aside>
+
+    <main class="preview-area" id="preview-area">
+
+      <!-- Actions Section -->
+      <section>
+        <div class="section-title">Actions</div>
+        <div class="wa-grid wa-gap-l" style="--min-column-size: 200px;">
+          <wa-button variant="brand">Brand Button</wa-button>
+          <wa-button variant="neutral">Neutral Button</wa-button>
+          <wa-button variant="success">Success</wa-button>
+          <wa-button variant="danger">Danger</wa-button>
+          <wa-button variant="warning">Warning</wa-button>
+
+          <wa-button-group>
+            <wa-button size="small">Left</wa-button>
+            <wa-button size="small">Center</wa-button>
+            <wa-button size="small">Right</wa-button>
+          </wa-button-group>
+
+          <wa-dropdown>
+            <wa-button slot="trigger" caret>Dropdown</wa-button>
+            <wa-dropdown-item>Edit</wa-dropdown-item>
+            <wa-dropdown-item>Duplicate</wa-dropdown-item>
+            <wa-divider></wa-divider>
+            <wa-dropdown-item variant="danger">Delete</wa-dropdown-item>
+          </wa-dropdown>
+        </div>
+      </section>
+
+      <!-- Typography Section -->
+      <section>
+        <div class="section-title">Typography</div>
+        <div class="wa-stack wa-gap-m">
+          <h1 style="margin: 0;">Heading 1</h1>
+          <h2 style="margin: 0;">Heading 2</h2>
+          <h3 style="margin: 0;">Heading 3</h3>
+          <p style="margin: 0; max-width: 600px;">
+            This is a paragraph demonstrating the default typography. Web Awesome uses a robust set of
+            <strong>font tokens</strong> and <em>utility classes</em> to ensure your text looks great
+            and remains readable across all devices.
+          </p>
+          <div class="wa-cluster wa-gap-m wa-align-items-center">
+            <code>const awesome = true;</code>
+            <kbd>Cmd + K</kbd>
+          </div>
+        </div>
+      </section>
+
+      <!-- Layout Section -->
+      <section>
+        <div class="section-title">Layout Utilities</div>
+        <div class="wa-stack wa-gap-xl">
+          <div class="wa-grid wa-gap-m" style="--min-column-size: 150px;">
+            <div style="background: var(--wa-color-brand-fill-quiet); height: 100px; border-radius: var(--wa-border-radius-m); display: flex; align-items: center; justify-content: center;">Grid 1</div>
+            <div style="background: var(--wa-color-brand-fill-quiet); height: 100px; border-radius: var(--wa-border-radius-m); display: flex; align-items: center; justify-content: center;">Grid 2</div>
+            <div style="background: var(--wa-color-brand-fill-quiet); height: 100px; border-radius: var(--wa-border-radius-m); display: flex; align-items: center; justify-content: center;">Grid 3</div>
+          </div>
+
+          <div class="wa-cluster wa-gap-s">
+            <wa-button size="small">Cluster Item 1</wa-button>
+            <wa-button size="small">Item 2</wa-button>
+            <wa-button size="small">Longer Item 3</wa-button>
+            <wa-button size="small">Item 4</wa-button>
+            <wa-button size="small">5</wa-button>
+          </div>
+
+          <div class="wa-flank wa-align-items-start">
+            <wa-avatar label="User Avatar"></wa-avatar>
+            <div class="wa-stack wa-gap-3xs">
+              <strong>Layout Wizard</strong>
+              <p style="margin: 0; font-size: var(--wa-font-size-s);">Using wa-flank for media objects.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation Section -->
+      <section>
+        <div class="section-title">Navigation</div>
+        <div class="wa-stack wa-gap-xl">
+          <wa-tab-group>
+            <wa-tab slot="nav" panel="general">General</wa-tab>
+            <wa-tab slot="nav" panel="custom">Custom</wa-tab>
+            <wa-tab slot="nav" panel="advanced">Advanced</wa-tab>
+            <wa-tab-panel name="general">General settings content.</wa-tab-panel>
+            <wa-tab-panel name="custom">Custom settings content.</wa-tab-panel>
+            <wa-tab-panel name="advanced">Advanced settings content.</wa-tab-panel>
+          </wa-tab-group>
+
+          <wa-breadcrumb>
+            <wa-breadcrumb-item href="#">Home</wa-breadcrumb-item>
+            <wa-breadcrumb-item href="#">Components</wa-breadcrumb-item>
+            <wa-breadcrumb-item>Playground</wa-breadcrumb-item>
+          </wa-breadcrumb>
+
+          <wa-tree style="max-width: 300px;">
+            <wa-tree-item expanded>
+              Assets
+              <wa-tree-item>Images</wa-tree-item>
+              <wa-tree-item>Fonts</wa-tree-item>
+            </wa-tree-item>
+            <wa-tree-item>Source</wa-tree-item>
+          </wa-tree>
+        </div>
+      </section>
+
+      <!-- Form Controls Section -->
+      <section>
+        <div class="section-title">Form Controls</div>
+        <div class="wa-grid wa-gap-l" style="--min-column-size: 250px;">
+          <wa-input label="Name" placeholder="Enter your name" help-text="We'll never share your name."></wa-input>
+          <wa-select label="Favorite Animal" value="cat">
+            <wa-option value="dog">Dog</wa-option>
+            <wa-option value="cat">Cat</wa-option>
+            <wa-option value="bird">Bird</wa-option>
+          </wa-select>
+
+          <div class="wa-cluster wa-gap-l wa-align-items-center">
+            <wa-checkbox checked>Checkbox</wa-checkbox>
+            <wa-switch checked>Switch</wa-switch>
+          </div>
+
+          <wa-radio-group label="Select an option" value="1">
+            <wa-radio value="1">Option 1</wa-radio>
+            <wa-radio value="2">Option 2</wa-radio>
+          </wa-radio-group>
+
+          <wa-textarea label="Bio" placeholder="Tell us about yourself"></wa-textarea>
+          <wa-rating label="Rate your experience" value="3"></wa-rating>
+        </div>
+      </section>
+
+      <!-- Feedback & Status Section -->
+      <section>
+        <div class="section-title">Feedback & Status</div>
+        <div class="wa-stack wa-gap-m">
+          <wa-callout variant="brand">
+            <wa-icon slot="icon" name="circle-info"></wa-icon>
+            <strong>Welcome to the playground!</strong><br>
+            Experiment with themes and palettes in the sidebar to see how components adapt.
+          </wa-callout>
+
+          <div class="wa-grid wa-gap-l" style="--min-column-size: 200px;">
+            <div class="wa-cluster wa-gap-s">
+              <wa-badge variant="brand">New</wa-badge>
+              <wa-badge variant="success">Fixed</wa-badge>
+              <wa-badge variant="danger" pill>99+</wa-badge>
+            </div>
+
+            <div class="wa-cluster wa-gap-s">
+              <wa-tag variant="neutral" size="small">Tag</wa-tag>
+              <wa-tag variant="brand" size="small" removable>Removable</wa-tag>
+            </div>
+
+            <wa-progress-bar value="60" label="Uploading..."></wa-progress-bar>
+
+            <div class="wa-cluster wa-gap-l wa-align-items-center">
+              <wa-spinner></wa-spinner>
+              <wa-spinner style="font-size: 2rem;"></wa-spinner>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Organization Section -->
+      <section>
+        <div class="section-title">Organization</div>
+        <div class="wa-grid wa-gap-l" style="--min-column-size: 300px;">
+          <wa-card>
+            <img slot="image" src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&w=400&q=80" alt="Abstract art">
+            <strong>Card Title</strong><br>
+            This is a standard card with an image and some content.
+            <div slot="footer">
+              <wa-button variant="brand" size="small">Action</wa-button>
+            </div>
+          </wa-card>
+
+          <wa-details summary="Click to expand">
+            Here is some detailed information that is hidden by default. It's great for FAQs or secondary content.
+          </wa-details>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>
