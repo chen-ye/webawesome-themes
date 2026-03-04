@@ -186,8 +186,6 @@
     const previewArea = document.getElementById('preview-area');
     const configCode = document.getElementById('config-code');
 
-    const radii = ['square', 's', 'm', 'l', 'pill'];
-
     function updateConfig() {
       const themeClass = themeSelect.value === 'default' ? 'wa-theme-default' : `wa-theme-${themeSelect.value}`;
       const paletteClass = paletteSelect.value === 'default' ? '' : `wa-palette-${paletteSelect.value}`;
@@ -198,16 +196,15 @@
 
       html.className = classes;
 
-      // Update radius
-      const radiusValue = radii[radiusSlider.value];
-      html.style.setProperty('--wa-border-radius-m', `var(--wa-border-radius-${radiusValue})`);
+      // Update radius using scale modifier
+      const radiusScale = radiusSlider.value;
+      html.style.setProperty('--wa-border-radius-scale', radiusScale);
 
       // Update scaling using scale modifiers
       const scale = scalingSelect.value;
       previewArea.style.setProperty('--wa-font-size-scale', scale);
       previewArea.style.setProperty('--wa-space-scale', scale);
       previewArea.style.setProperty('--wa-border-width-scale', scale);
-      previewArea.style.setProperty('--wa-border-radius-scale', scale);
 
       // Update code view
       configCode.textContent = `<html class="${classes}">`;
@@ -269,11 +266,12 @@
         </div>
 
         <div class="control-group">
-          <label class="control-label">Radius</label>
-          <wa-slider id="radius-slider" min="0" max="4" step="1" value="2"></wa-slider>
+          <label class="control-label">Radius Scale</label>
+          <wa-slider id="radius-slider" min="0" max="2" step="0.1" value="1"></wa-slider>
           <div style="display: flex; justify-content: space-between; font-size: 10px; margin-top: 4px; color: var(--wa-color-text-quiet);">
-            <span>None</span>
-            <span>Pill</span>
+            <span>Sharp</span>
+            <span>1x</span>
+            <span>Round</span>
           </div>
         </div>
 
