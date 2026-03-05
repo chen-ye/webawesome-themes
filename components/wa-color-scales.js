@@ -1,4 +1,5 @@
 import { LitElement, html, nothing } from 'lit';
+import utilityStyles from '@awesome.me/webawesome/dist/styles/utilities.css' with { type: 'css' };
 
 const COLOR_STEPS = ['05', '10', '20', '30', '40', '50', '60', '70', '80', '90', '95'];
 
@@ -11,14 +12,14 @@ const COLOR_STEPS = ['05', '10', '20', '30', '40', '50', '60', '70', '80', '90',
  * @property {string} comparisonPaletteClass - CSS class suffix for comparison (e.g. 'shoelace')
  */
 export class WaPaletteScale extends LitElement {
+  static styles = [utilityStyles];
+
   static properties = {
     color:                 { type: String },
     activePaletteName:     { type: String, attribute: 'active-palette-name' },
     comparisonPaletteName: { type: String, attribute: 'comparison-palette-name' },
     comparisonPaletteClass:{ type: String, attribute: 'comparison-palette-class' },
   };
-
-  createRenderRoot() { return this; }
 
   _renderRow(label, paletteClass, isComparison) {
     const swatches = COLOR_STEPS.map(step => {
@@ -76,13 +77,13 @@ customElements.define('wa-palette-scale', WaPaletteScale);
 const ALL_CORE_PALETTES = ['gray', 'mauve', 'slate', 'sage', 'olive', 'sand', 'red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'indigo', 'purple', 'pink'];
 
 export class WaColorScales extends LitElement {
+  static styles = [utilityStyles];
+
   static properties = {
     activePaletteName:      { type: String, attribute: 'active-palette-name' },
     comparisonPaletteName:  { type: String, attribute: 'comparison-palette-name' },
     comparisonPaletteClass: { type: String, attribute: 'comparison-palette-class' },
   };
-
-  createRenderRoot() { return this; }
 
   render() {
     return html`

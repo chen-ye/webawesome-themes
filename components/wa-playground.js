@@ -1,4 +1,6 @@
 import { LitElement, html, nothing } from 'lit';
+import componentStyles from './wa-playground.css' with { type: 'css' };
+import utilityStyles from '@awesome.me/webawesome/dist/styles/utilities.css' with { type: 'css' };
 import '@awesome.me/webawesome/dist/styles/webawesome.css';
 import '@awesome.me/webawesome/dist/styles/themes/awesome.css';
 import '@awesome.me/webawesome/dist/styles/themes/shoelace.css';
@@ -99,7 +101,7 @@ export class WaPlayground extends LitElement {
     comparisonPalette:{ type: String },
   };
 
-  createRenderRoot() { return this; }
+  static styles = [utilityStyles, componentStyles];
 
   constructor() {
     super();
