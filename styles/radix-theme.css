@@ -18,6 +18,9 @@
     --wa-color-surface-lowered: var(--wa-color-neutral-95);
     --wa-color-surface-border: var(--wa-color-neutral-60);
 
+    --wa-color-panel-translucent: rgba(255, 255, 255, 0.7);
+    --wa-backdrop-filter-panel: blur(64px);
+
     --wa-color-text-normal: var(--wa-color-neutral-05);
     --wa-color-text-quiet: var(--wa-color-neutral-10);
     --wa-color-text-link: var(--wa-color-brand-40);
@@ -103,6 +106,9 @@
     --wa-color-surface-default: var(--wa-color-neutral-05);
     --wa-color-surface-lowered: color-mix(in oklab, var(--wa-color-surface-default), black 20%);
     --wa-color-surface-border: var(--wa-color-neutral-40); /* Step 6 */
+
+    --wa-color-panel-translucent: var(--wa-color-gray-a2);
+    --wa-backdrop-filter-panel: blur(64px);
 
     --wa-color-text-normal: var(--wa-color-neutral-95);
     --wa-color-text-quiet: var(--wa-color-neutral-60);
@@ -277,16 +283,30 @@
       font-weight: 500;
       text-transform: none;
     }
+
     wa-card {
       box-shadow: var(--wa-shadow-s);
     }
-    wa-dropdown::part(panel),
+
+    wa-dropdown::part(menu),
     wa-popover::part(popover),
-    wa-dialog::part(panel) {
+    wa-dialog::part(dialog) {
       box-shadow: var(--wa-shadow-l) !important;
     }
+
     wa-select::part(listbox) {
       box-shadow: var(--wa-shadow-m) !important;
+    }
+
+    wa-card::part(base),
+    wa-dialog::part(dialog),
+    wa-drawer::part(dialog),
+    wa-dropdown::part(menu),
+    wa-popover::part(popover),
+    wa-select::part(listbox) {
+      background-color: var(--wa-color-panel-translucent) !important;
+      -webkit-backdrop-filter: var(--wa-backdrop-filter-panel);
+      backdrop-filter: var(--wa-backdrop-filter-panel);
     }
   }
 }
